@@ -14,20 +14,25 @@ const JoinView = ({ navigation }) => {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const submitJoinData = async () => {
-    const response = await axios.post(
-      `${baseUrl}${joinUrl}`,
-      {
-        // 서버통신
-        userId: JSON.stringify(userId),
-        name: JSON.stringify(name),
-        password: JSON.stringify(password),
-      },
-      {
-        headers: {
-          'Content-Type': `application/json`,
+    const response = await axios
+      .post(
+        `${baseUrl}${joinUrl}`,
+        {
+          // 서버통신
+          userId: JSON.stringify(userId),
+          name: JSON.stringify(name),
+          password: JSON.stringify(password),
         },
-      }
-    );
+        {
+          headers: {
+            'Content-Type': `application/json`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log('성공');
+      })
+      .catch((error) => console.log('에러' + error));
     if (response.status == 201) {
       await AsyncStorage.setItem('userId', JSON.stringify(userId)); //로그인 정보 저장
       navigation.navigate('BottomTabHome');

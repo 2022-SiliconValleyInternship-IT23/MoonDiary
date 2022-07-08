@@ -63,7 +63,7 @@ export default function Calendar() {
   };
   const calDay = () => {
     //달력 render를 위한 이전 달과 다음달 포함한 날짜 계산
-    tempArr = [];
+    var tempArr = [];
     for (var j = prevDate - prevDay; j <= prevDate; j++) {
       if (prevDay === 6) {
         //이전달의 7개 이상의 데이터 있을 시 push 하지 않음

@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, TouchableOpacity, ImageBackground } from 'react-native';
 import { basic_theme } from '../theme';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
@@ -35,9 +35,10 @@ const ReadDiary = () => {
         </View>
       </ScrollView>
       <View style={{ flex: 0.25 }}>
-        <View style={styles.mybox}>
-          <Text style={{ ...styles.text, padding: 10 }}>AI감상평</Text>
-        </View>
+        <Image source={require('../assets/img/speech-bubble.png')} style={styles.speech}></Image>
+        <Text style={{ ...styles.text, margin: 20, fontSize: 16, alignSelf: 'center' }}>
+          홍길동님에게 정말 뿌듯한 날이였군요
+        </Text>
       </View>
       <View
         style={{
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
   mybox: {
     backgroundColor: basic_theme.fgColor,
     borderRadius: 8,
-    margin: 5,
+    margin: 10,
   },
   btn: {
     height: 40,
@@ -80,6 +81,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: basic_theme.btnColor,
     justifyContent: 'center',
+  },
+  speech: {
+    alignSelf: 'center',
+    height: Dimensions.get('window').height / 7,
+    resizeMode: 'stretch',
+    position: 'absolute',
   },
 });
 

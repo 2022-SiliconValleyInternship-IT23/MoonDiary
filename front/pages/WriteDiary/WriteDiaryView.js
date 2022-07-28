@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { View, StyleSheet, Image, Dimensions, TextInput } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, TextInput, LogBox } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { basic_theme, month, weather_list, text } from '../../theme';
@@ -9,6 +9,8 @@ import UserContext from '../../service/UserContext';
 import { ModalWindow } from '../../components/ModalWindow';
 import styled, { css } from 'styled-components/native';
 
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs(); //Ignore all log notifications
 const WriteDiaryView = ({ navigation, route }) => {
   const userContext = useContext(UserContext);
   const [year, setYear] = useState(new Date().getFullYear());
